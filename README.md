@@ -10,6 +10,7 @@
 - **cordova-plugin-theme-detection**
 - **cordova-plugin-splashscreen**
 - **cordova-res**
+- ...
 
 
 ## Dark theme
@@ -17,3 +18,6 @@
 
 ## Light theme
 ![Dark theme](https://github.com/kebasyaty/demo-calculator/raw/main/images/light_cover.png "Light theme")
+
+## License
+**This project is licensed under the** [MIT](https://github.com/kebasyaty/demo-calculator/blob/main/LICENSE "MIT").
