@@ -1,15 +1,15 @@
 # demo-calculator
-> A simple calculator with a stylish design.
-> Automatically switch between light and dark themes - iOS 13+ or Android 9+.
+**A simple calculator with a stylish design.**
+**Automatically switch between light and dark themes - iOS 13+ or Android 9+.**
 
 ## Requirements
-**Cordova**
-**Vue.js**
-**Vuetify**
-**Jest**
-**cordova-plugin-theme-detection**
-**cordova-plugin-splashscreen**
-**cordova-res**
+- **Cordova**
+- **Vue.js**
+- **Vuetify**
+- **Jest**
+- **cordova-plugin-theme-detection**
+- **cordova-plugin-splashscreen**
+- **cordova-res**
 
 
 ## Dark theme
