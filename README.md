@@ -1,3 +1,5 @@
+[![Logo](https://github.com/kebasyaty/demo-calculator/raw/main/images/logo.svg "Logo")](https://github.com/kebasyaty/demo-calculator "Logo")
+
 # demo-calculator
 **A simple calculator with a stylish design.**
 **Automatically switch between light and dark themes - iOS 13+ or Android 9+.**
