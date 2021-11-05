@@ -164,7 +164,7 @@ export default {
     // Get the calculation result.
     getResultCalculation(screenBuffer) {
       let currResult = "";
-      let valTmp = screenBuffer
+      let valTmp = JSON.parse(JSON.stringify(screenBuffer))
         .join("")
         .replace(/(&divide;|&times;|&minus;|&plus;|,)/gi, (match) => {
           switch (match) {
@@ -182,21 +182,21 @@ export default {
         });
       if (/[/*\-+.]{2,}/g.test(valTmp)) {
         this.showMessage("Invalid arithmetic expression.");
-        return;
+        return screenBuffer;
       }
       if (valTmp.includes("/0")) {
         this.showMessage("Cannot divide by zero.");
-        return;
+        return screenBuffer;
       }
       try {
         currResult = Math.round(eval(valTmp) * 100) / 100;
       } catch (err) {
         this.showMessage("Invalid arithmetic expression.");
-        return;
+        return screenBuffer;
       }
       if (!isFinite(currResult)) {
         this.showMessage("The result is infinity.");
-        return;
+        return screenBuffer;
       }
       return currResult
         .toString()
