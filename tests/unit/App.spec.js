@@ -313,6 +313,7 @@ describe("App.vue", () => {
 
     // ERRORS
     // ---------------------------------------------------------------------------------------------
+    let btnCloseAlerts;
     // Division by zero
     screenBuffer = ["2", "&divide;", "0"];
     expect(wrapper.vm.getResultCalculation(screenBuffer)).toMatchObject(
@@ -320,7 +321,20 @@ describe("App.vue", () => {
     );
     expect(store.state.message).toBe("Cannot divide by zero.");
     expect(store.state.showAlerts).toBe(true);
-    const btnCloseAlerts = wrapper.find(".btn-close-alerts");
+    btnCloseAlerts = wrapper.find(".btn-close-alerts");
+    btnCloseAlerts.trigger("click");
+    expect(store.state.showAlerts).toBe(false);
+    expect(wrapper.vm.getResultCalculation(screenBuffer)).toMatchObject(
+      screenBuffer
+    );
+    // Nearby standing signs of arithmetic operations.
+    screenBuffer = ["2", "&plus;", "&plus;", "2"];
+    expect(wrapper.vm.getResultCalculation(screenBuffer)).toMatchObject(
+      screenBuffer
+    );
+    expect(store.state.message).toBe("Invalid arithmetic expression.");
+    expect(store.state.showAlerts).toBe(true);
+    btnCloseAlerts = wrapper.find(".btn-close-alerts");
     btnCloseAlerts.trigger("click");
     expect(store.state.showAlerts).toBe(false);
     expect(wrapper.vm.getResultCalculation(screenBuffer)).toMatchObject(
