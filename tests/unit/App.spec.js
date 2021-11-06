@@ -318,6 +318,7 @@ describe("App.vue", () => {
     expect(wrapper.vm.getResultCalculation(screenBuffer)).toMatchObject(
       screenBuffer
     );
+    expect(store.state.message).toBe("Cannot divide by zero.");
     expect(store.state.showAlerts).toBe(true);
     const btnCloseAlerts = wrapper.find(".btn-close-alerts");
     btnCloseAlerts.trigger("click");
