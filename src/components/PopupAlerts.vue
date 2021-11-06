@@ -2,7 +2,13 @@
   <v-snackbar app centered v-model="cmpShowAlerts" vertical timeout="-1">
     <span class="text-subtitle-1 v-snackbar--props-message">{{ message }}</span>
     <template v-slot:action="{ attrs }">
-      <v-btn color="pink" text v-bind="attrs" @click="setShowAlerts(false)">
+      <v-btn
+        color="pink"
+        text
+        v-bind="attrs"
+        @click="setShowAlerts(false)"
+        class="btn-close-alerts"
+      >
         Close
       </v-btn>
     </template>

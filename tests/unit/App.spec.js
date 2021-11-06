@@ -301,14 +301,34 @@ describe("App.vue", () => {
       store,
     });
     //
+    // Default state
+    // ---------------------------------------------------------------------------------------------
     let screenBuffer = ["0"];
-    //
     expect(wrapper.vm.getResultCalculation(screenBuffer)).toMatchObject(["0"]);
-    //
+
+    // 1 + 1
+    // ---------------------------------------------------------------------------------------------
     screenBuffer = ["1", "&plus;", "1"];
     expect(wrapper.vm.getResultCalculation(screenBuffer)).toMatchObject(["2"]);
-    //
-    // Celsius to Fahrenheit.
+
+    // ERRORS
+    // ---------------------------------------------------------------------------------------------
+    // Division by zero
+    screenBuffer = ["2", "&divide;", "0"];
+    expect(wrapper.vm.getResultCalculation(screenBuffer)).toMatchObject(
+      screenBuffer
+    );
+    expect(store.state.showAlerts).toBe(true);
+    const btnCloseAlerts = wrapper.find(".btn-close-alerts");
+    btnCloseAlerts.trigger("click");
+    expect(store.state.showAlerts).toBe(false);
+    expect(wrapper.vm.getResultCalculation(screenBuffer)).toMatchObject(
+      screenBuffer
+    );
+
+    // CELSIUS TO FAHRENHEIT.
+    // ---------------------------------------------------------------------------------------------
+    // 0C = 32F
     screenBuffer = [
       "(",
       "0",
@@ -324,7 +344,7 @@ describe("App.vue", () => {
       "3",
       "2",
     ]);
-    //
+    // 32C = 89,6F
     screenBuffer = [
       "(",
       "3",
@@ -344,7 +364,8 @@ describe("App.vue", () => {
       "6",
     ]);
     //
-    // Fahrenheit to Celsius.
+    // FAHRENHEIT TO CELSIUS
+    // 32F = 0C
     screenBuffer = [
       "(",
       "32",
@@ -357,7 +378,7 @@ describe("App.vue", () => {
       "5",
     ];
     expect(wrapper.vm.getResultCalculation(screenBuffer)).toMatchObject(["0"]);
-    //
+    // 0F = -17,78C
     screenBuffer = [
       "(",
       "0",

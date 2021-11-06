@@ -164,6 +164,7 @@ export default {
     // Get the calculation result.
     getResultCalculation(screenBuffer) {
       let currResult = "";
+      // Interpretation of symbols.
       let valTmp = JSON.parse(JSON.stringify(screenBuffer))
         .join("")
         .replace(/(&divide;|&times;|&minus;|&plus;|,)/gi, (match) => {
@@ -180,24 +181,29 @@ export default {
               return ".";
           }
         });
+      // Error - Nearby standing signs of arithmetic operations.
       if (/[/*\-+.]{2,}/g.test(valTmp)) {
         this.showMessage("Invalid arithmetic expression.");
         return screenBuffer;
       }
+      // Error - Division by zero.
       if (valTmp.includes("/0")) {
         this.showMessage("Cannot divide by zero.");
         return screenBuffer;
       }
+      // Calculation with rounding.
       try {
         currResult = Math.round(eval(valTmp) * 100) / 100;
       } catch (err) {
         this.showMessage("Invalid arithmetic expression.");
         return screenBuffer;
       }
+      // Error - If the result is infinity.
       if (!isFinite(currResult)) {
         this.showMessage("The result is infinity.");
         return screenBuffer;
       }
+      // Return result.
       return currResult
         .toString()
         .replace(".", ",")
