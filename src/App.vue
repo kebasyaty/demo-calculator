@@ -220,12 +220,12 @@ export default {
         this.btnColor = {
           number: "grey darken-4",
           action: "orange darken-3",
-          extra: "blue-grey darken-3",
+          extra: "brown darken-3",
         };
         this.btnContentColor = {
-          number: "white",
+          number: "grey lighten-5",
           action: "white",
-          extra: "white",
+          extra: "brown lighten-3",
         };
       } else {
         this.screenTextColor = [
@@ -234,8 +234,8 @@ export default {
         ];
         this.btnColor = {
           number: "grey lighten-4",
-          action: "orange lighten-3",
-          extra: "blue-grey lighten-3",
+          action: "orange lighten-4",
+          extra: "blue-grey lighten-4",
         };
         this.btnContentColor = {
           number: "grey darken-2",
